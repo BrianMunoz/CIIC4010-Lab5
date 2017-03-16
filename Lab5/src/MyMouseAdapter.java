@@ -35,7 +35,6 @@ public class MyMouseAdapter extends MouseAdapter {
 			myPanel.repaint();
 			break;
 		case 3:		//Right mouse button
-			//Do nothing
 			Component d = e.getComponent();
 			while (!(d instanceof JFrame)) {
 				d = d.getParent();
@@ -98,8 +97,9 @@ public class MyMouseAdapter extends MouseAdapter {
 						//Do nothing
 					} else {
 						//Released the mouse button on the same cell where it was pressed
+						//On the left column and on the top row... do nothing
 						if ((gridX == 0) || (gridY == 0)) {
-							//On the left column and on the top row... do nothing
+							//Paint randomly the row of the right gray cell click it
 							if(gridX == 0 && gridY !=0 && gridY != 10){
 								for(int i = 1; i < 10; i++){
 									Color newColor = null;
@@ -125,6 +125,7 @@ public class MyMouseAdapter extends MouseAdapter {
 									myPanel.colorArray[myPanel.mouseDownGridX + i][myPanel.mouseDownGridY] = newColor;
 									myPanel.repaint();
 								}
+								//Paint randomly the bottom column of the gray cell click it
 							}else if(gridY == 0 && gridX != 0){
 								for(int i = 1; i < 10; i++){
 									Color newColor = null;
@@ -150,6 +151,7 @@ public class MyMouseAdapter extends MouseAdapter {
 									myPanel.colorArray[myPanel.mouseDownGridX][myPanel.mouseDownGridY + i] = newColor;
 									myPanel.repaint();
 								}
+								//Paint diagonal cells when click is on (0, 0)
 							}else if (gridX == 0 && gridY == 0){
 								for(int i = 1; i < 10; i++){
 									Color newColor = null;
@@ -175,6 +177,7 @@ public class MyMouseAdapter extends MouseAdapter {
 									myPanel.colorArray[myPanel.mouseDownGridX + i][myPanel.mouseDownGridY + i] = newColor;
 									myPanel.repaint();
 								}
+								//Click on last left bottom cell to change center of grid (3x3)
 							}else if (gridX == 0 && gridY == 10){
 								for(int moveOnCol = 4; moveOnCol <=6; moveOnCol++){
 									for(int moveOnRow = 4; moveOnRow <= 6; moveOnRow++){
@@ -234,7 +237,6 @@ public class MyMouseAdapter extends MouseAdapter {
 			myPanel.repaint();
 			break;
 		case 3:		//Right mouse button
-			//Do nothing
 			Component d = e.getComponent();
 			while (!(d instanceof JFrame)) {
 				d = d.getParent();
